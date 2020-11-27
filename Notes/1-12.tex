@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage,amsthm,amssymb,amsmath,amsfonts}
+\usepackage{graphicx,algorithmic,algorithm}
+\usepackage[]{datetime}
+\usepackage{aliascnt} % new !
+\usepackage{hyperref,todonotes}
+\usepackage{lmodern}
+\usepackage{mathtools}
+
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+% for \mapsfrom
+\usepackage{stmaryrd}
+
+\usepackage{subcaption}
+\usepackage{cleveref}
+
+\usepackage[greek,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{alphabeta}
+
+\usepackage{amsmath,ifthen,color,eurosym}
+\usepackage{wrapfig,hyperref,cite}
+%\usepackage{times}
+\usepackage{latexsym,amsthm,amsmath,amssymb,url}
+%,cite}
+
+\usepackage{float}
+
+\extrafloats{100}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+%\usepackage{dirtytalk}
+
+\usepackage{cite}
+
+
+% \newcommand{\aliv}[1]{\marginpar{\scriptsize \tt {A.Λ.}> {\sl #1}}}
+
+\usepackage{color}
+
+
+\newcommand{\yellow}[1]{{\color{Yellow}#1}}
+\newcommand{\black}[1]{{\color{Black}#1}}
+\newcommand{\other}[1]{{\color{Other}#1}}
+\newcommand{\otherother}[1]{{\color{Otherother}#1}}
+\newcommand{\blue}[1]{{\color{Blue}#1}}
+\newcommand{\red}[1]{{\color{Red}#1}}
+\newcommand{\green}[1]{{\color{mygreen}#1}}
+\newcommand{\magenta}[1]{{\color{Magenta}#1}}
+\newcommand{\brown}[1]{{\color{Brown}#1}}
+\newcommand{\white}[1]{{\color{White}#1}}
+\newcommand{\grey}[1]{{\color{Grey}#1}}
+\DeclareMathOperator{\tw}{{\bf tw}}
+
+
+% Autoref stuff
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
+% for a good theorem numbering
+\newtheorem{dummy}{***}[section]
+\newcommand{\mynewtheorem}[2]{
+ \newaliascnt{#1}{dummy}
+ \newtheorem{#1}[#1]{#2}
+ \aliascntresetthe{#1}
+ % maybe we will squish some autoref defaults, but who cares?
+ \expandafter\def\csname #1autorefname\endcsname{#2}
+}
+
+\def\problemautorefname{Problem}
+\def\chapterautorefname{Chapter}
+\def\definitionautorefname{Definition}
+\def\claimautorefname{Claim}
+\def\corollaryautorefname{Corollary}
+\def\lemmaautorefname{Lemma}
+\def\sublemmaautorefname{Sublemma}
+\def\propositionautorefname{Proposition}
+\def\observationautorefname{Observation}
+\def\corollaryautorefname{Corollary}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\figureautorefname{Diagram}
+\def\tableautorefname{Table}
+\def\remarkautorefname{Remark}
+\def\rmkautorefname{Remark}
+\def\observationautorefname{Observation}
+\def\conjectureautorefname{Conjecture}
+\def\questionautorefname{Question}
+
+
+\theoremstyle{plain}
+\mynewtheorem{theorem}{Theorem}
+\mynewtheorem{proposition}{Proposition}
+\mynewtheorem{corollary}{Corollary}
+\mynewtheorem{lemma}{Lemma}
+\mynewtheorem{exercise}{Exercise}
+
+\theoremstyle{definition}
+\mynewtheorem{definition}{Definition}
+\theoremstyle{remark}
+\mynewtheorem{sublemma}{Sublemma}
+\mynewtheorem{claim}{Claim}
+\mynewtheorem{fact}{Fact}
+\mynewtheorem{remark}{Remark}
+\mynewtheorem{application}{Application}
+\mynewtheorem{conjecture}{Conjecture}
+\mynewtheorem{question}{Question}       
+\mynewtheorem{observation}{Observation}
+\mynewtheorem{problem}{Problem}
+\mynewtheorem{note}{Note}
+\mynewtheorem{examples}{Examples}
+\mynewtheorem{example}{Example}
+\mynewtheorem{exercises}{Exercises}
+
+%1-1 correspondence
+\makeatletter
+\def\DoubleFill@{\arrowfill@=\Relbar=}
+\providecommand*\xDouble[2][]{%
+  \ext@arrow 0055{\DoubleFill@}{#1}{#2}}
+\makeatother
+
+%Subobject classifier
+\newcommand{\ceil}[1]{\lceil #1 \rceil }
+
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cP}{\mathcal{P}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Ar}{\mathrm{Ar}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\cod}{\mathrm{cod}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Cone}{\mathrm{Cone}}
+\newcommand{\Cocone}{\mathrm{Cocone}}
+\newcommand{\colim}{\mathrm{colim}}
+\newcommand{\Sub}{\mathrm{Sub}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Adj}{\mathrm{Adj}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Sep}{\mathrm{Sep}}
+\newcommand{\ClSub}{\mathrm{ClSub}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+\title{Category Theory and Topos Theory: Lecture Notes}
+\author{Alexandros Leivaditis + George Politopoulos}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzcd}
+  \arrow[rr, bend right=60] \arrow[rr, bend right=49] \arrow[rr, bend right] \arrow[rr, bend left=60] \arrow[rr, bend left=49] \arrow[rr, bend left] \arrow[rr] \arrow[rr, bend right=67] \arrow[rr, bend left=67] \arrow[rr, bend right=71] \arrow[rr, bend left=71] \arrow[rr, bend left=74] \arrow[rr, bend right=74] \arrow[rr, bend left=76] \arrow[rr, bend right=76] \arrow[rr, bend right=78] \arrow[rr, bend left=78] \arrow[rr, bend right=79] \arrow[rr, bend left=79]                                                                                                           &  &  \arrow[dd, bend right=76] \arrow[dd, bend right=74] \arrow[dd, bend right=71] \arrow[dd, bend right=67] \arrow[dd, bend right=60] \arrow[dd, bend right=49] \arrow[dd, bend right] \arrow[dd, bend left=71] \arrow[dd, bend left=74] \arrow[dd, bend left=76] \arrow[dd, bend left=67] \arrow[dd, bend left=60] \arrow[dd, bend left=49] \arrow[dd, bend left] \arrow[dd] \arrow[dd, bend left=78] \arrow[dd, bend right=78] \arrow[dd, bend right=79] \arrow[dd, bend right=80] \\                        &  &                            \\
+ \arrow[rruu, bend right=60] \arrow[rruu, bend right=49] \arrow[rruu, bend right] \arrow[rruu, bend left=60] \arrow[rruu, bend left=49] \arrow[rruu, bend left] \arrow[uu, bend left=60] \arrow[uu, bend left=49] \arrow[uu, bend left] \arrow[uu, bend right=60] \arrow[uu, bend right=49] \arrow[uu, bend right] \arrow[uu, bend right=67] \arrow[uu, bend left=67] \arrow[uu, bend left=71] \arrow[uu, bend right=71] \arrow[uu, bend right=74] \arrow[uu, bend left=74] \arrow[uu, bend right=76] \arrow[uu, bend left=76] \arrow[uu, bend right=78] \arrow[uu, bend left=78] \arrow[uu, bend left=79] \arrow[uu, bend right=79] \arrow[uu] \arrow[rruu] \arrow[rr, bend left=79] \arrow[rr, bend left=78] \arrow[rr, bend left=76] \arrow[rr, bend left=74] \arrow[rr, bend left=71] \arrow[rr, bend left=67] \arrow[rr, bend left=60] \arrow[rr, bend left=49] \arrow[rr, bend left] \arrow[rr, bend right=78] \arrow[rr, bend right=76] \arrow[rr, bend right=74] \arrow[rr, bend right=71] \arrow[rr, bend right=67] \arrow[rr, bend right=60] \arrow[rr, bend right=49] \arrow[rr, bend right] \arrow[rr] &  &  \arrow[lluu, bend left=67] \arrow[lluu, bend left=71] \arrow[lluu, bend left=60] \arrow[lluu, bend left=49] \arrow[lluu, bend left] \arrow[lluu, bend left] \arrow[lluu, bend right=71] \arrow[lluu, bend right=67] \arrow[lluu, bend right=49] \arrow[lluu, bend right] \arrow[lluu] \arrow[lluu, bend right=60]                                                                                                                                                               
+\end{tikzcd}
+\label{psy}
+\end{figure}
+\selectlanguage{english}
+\begin{exercises}
+\begin{enumerate}
+\item Let X be an object and $\textlatin{Id}_X,\textlatin{Id}'_X$ be two identity arrows for the object X. Applying the definition for $\textlatin{Id}_X$ with $f=\textlatin{Id}'_X$ one has \[\textlatin{Id}'_X \circ \textlatin{Id}_X=\textlatin{Id}'_X\]
+Applying the definition for $\textlatin{Id}'_X$ for $g=\textlatin{Id}_X$ we get \[\textlatin{Id}'_X \circ \textlatin{Id}_X=\textlatin{Id}_X\]
+Hence $\textlatin{Id}'_X =\textlatin{Id}_X$
+
+\item Let $\cC_0=X$ and a unique arrow $x \to y\iff x \leq y$. Since $ \leq$ is reflexive we have $\forall x \in X: x \leq x$ so we have a unique arrow $x \to x$ in $\cC_1$.We claim this is the identity arrow. If $y \in X$ with $x \leq y \Rightarrow f: x \to y$. We write $x \leq x \leq y \Rightarrow g=\textlatin{Id}_x \circ f :x \to x \to y$. By the uniquness we get $\textlatin{Id}_x \circ f=\textlatin{Id}_x$. Similarly $g \circ \textlatin{Id}_x=g$.\\
+
+Define a binary relation $\cdot \leq \cdot$ on the set $\mathcal{C}_0$, such that \[X  \leq Y \iff \exists \text{  an arrow  } X \to Y \]
+We only need to show this relation is reflexive and transitive\\
+Since $( \mathcal{C}_0,\mathcal{C}_1)$ is a category we have:\\
+$(\forall X \in \mathcal{C}_0) (\exists \textlatin{Id}_X:X \to X \in \mathcal{C}_1)$. This is equivalent to the reflexivity of $ \leq$.
+For the transitivity, let $X \leq Y$ and $Y \leq Z$. Therefore there exist arrows $f:X \to Y$ and $g:Y \to Z$. Notice $\dom(f)=\cod(g)$ so we have an arrow $g \circ f:X \to Z \iff X \leq Z$, and $\leq$ is transitive.
+
+\item We show this indeed defines a functor $F:\text{Set} \to \text{Grp}$.
+Obviously when it comes to objects we have $F(A)=\tilde{A}$. If $f:A \to B$ is an arrow in set we define $F(f): \tilde{A} \to \tilde{B}$ to be the correspondence $\vec{a}=a_1a_2\cdots a_n \mapsto f(a_1)f(a_2)\cdots f(a_n)$. To do able to do this we must extend the definition of $f$ to $\tilde{A}=A \cup A^{-1}$. This is done naturally by postulating $f(a^{-1})=f(a)^{-1}$. This is well defined, meaning $ \vec{b}=f(a_1)f(a_2)\cdots f(a_n)$ is indeed an element of $\tilde{B}$.\\
+ We must show this correspondence is a group homorphism since $F(f)$ has to be an arrow in Grp. If $x_1 \cdots x_n, y_1\cdots y_k$ are elements of $\tilde{A}$ consider $F(f)(x_1 \cdots x_n\star y_1\cdots y_k)=F(f)(x_1\cdots x_{n-t}y_t\cdots y_k)=f(x_1)\cdots f(x_{n-t}) f(y_t) \cdots f(y_k)$, the change in indices occurs to account for a potential removal of elements of the form $ss^{-1}$, whereas $F(f)(x_1\cdots x_n) \star F(f)(y_1 \cdots y_k)=f(x_1) \cdots f(x_n) f(y_1) \cdots f(y_k)$. Since we postulated $f(a^{-1})=f(a)^{-1}$ whenever we have $tt^{-1}$ in the string above we will get $f(t)f(t)^{-1}$ in the preceding. Thus exactly the same deletions will take place. The end result is $f(x_1) \cdots f(x_n) f(y_1) \cdots f(y_k)=f(x_1) \cdots f(x_{n-t}) f(y_t) \cdots f(y_k)$.
+
+Now $\text{Id}_A:A \to A$ we must show $F(\text{Id}_A)=\text{Id}_{\tilde{A}}$. Let$\vec{a}$ be a string in $\tilde{A}$ then $F(\text{Id}_A)(a_1\cdots a_n)=\text{Id}(a_1) \cdots \text{Id}(a_n)=a_1 \cdots a_n$, as desired.\\ 
+Now let $f:A \to B$ and $g:B \to C$. Then if $\vec{a}$ is a string in $\tilde{A}$ we have $F( g \circ f)(a_1 \cdots a_n)=( g \circ f)(a_1) \cdots ( g \circ f)(a_n)=g(f(a_1)) \cdots g(f(a_n))=F(g)( f(a_1) \cdots f(a_n))=F(g)(F(f)(a_1 \cdots a_n))=(F(g) \circ F(f)) (a_1 \cdots a_n)$
+
+\item Firstly we must define the composition law for $(\cC/\sim)_1$. It is natural to put $[f][g]=[fg]$ for $[f]:X \to Y$ and $[g]:Y \to Z$. To show that this is well defined let $ f \sim_{X,Y} f' :X \to Y$ and $g \sim_{Y,Z} g':Y \to Z$. By the first property for $f,f': X\to Y$ and $g:Y \to Z$ we get \[ g'f \sim_{X,Z} g'f'\] similarly by the second for $g,g':Y \to Z$ and f we get \[gf \sim_{X,Z} g'f\] by transitivity of $\sim_{X,Z}$ we get $gf \sim_{X,Z} g'f'$ as required.\\	
+Define the functor $F:\cC \to \cC/\sim$ such that $F(X)=X$ in $(\cC/\sim)_0$ and if $f:X \to Y$ is an arrow, $F(f)=[f]$ its equivalence class in $\Hom(X,Y)$. We show this is indeed a functor. Firstly we consider $F(\text{Id}_X)=[\text{Id}_X]$ for some object $X$ of $\cC$. Let $[f]:X \to Y$ and $[g]: Y \to X$ be two arbitrary arrows in $(\cC/\sim)_1$.
+ Then we have $[f][\text{Id}_X]=[f\text{Id}_X]=[f]$ and $[\text{Id}_X][g]=[\text{Id}_X g]=[g]$, so since $[f], [g]$ were arbitrary, $F(\text{Id}_X)=[\text{Id}_X]$is indeed the identity arrow of $X$ in $(\cC/\sim)_0$. Now for  $g,f$with appropriate domain and codomain we have $F(gf)=[gf]=[g][f]=F(g)F(f)$.
+ 
+ \item We have to prove that the slice category $\cC/C$ is indeed a category. This amounts to proving the existence of an identity arrow for all objects of $\cC/C$ and a composition law. \\
+  Given arrows $h,k$ of $\cC/C$ we simply let $kh=g$ be the composition in $\mathcal{C}$
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRABEQBfU9TXfIRQAmclVqMWbAKLdeIDNjwEiAFjHV6zVohAAxOXyWCio4eK1TdAYW7iYUAObwioAGYAnCAFskZEDgQSADMmpI6IFAg1Ax0AEYwDAAK-MpCIAwwbjiGIJ4+ftSBSACMYdpsABbRGfGJKcYqupnZufm+iGUBQYihEhW6rDF1yakmzVk5PO5eHV3FiKL9ViAA1jWxCaON6S1T8u1ISwt9lhFuGyMNAk0Zk22zhd1H1AlgUb3+Z2yOdlxAA
+\begin{tikzcd}
+D \arrow[rrdd, "d"] \arrow[rr, "h"] \arrow[rrrr, "g", bend left] &  & E \arrow[dd, "e"] \arrow[rr, "k"] &  & F \arrow[lldd, "f"] \\
+                                                                 &  &                                   &  &                     \\
+                                                                 &  & C                                 &  &                    
+\end{tikzcd}
+Clearly we have $fg=(fk)h=eh=d$.
+ The assosiativity is a direct consequense of the definition and the associativity in $\cC$.\\
+ If $f$ is an object of $\cC/C$, thus an arrow $f:F \to C$ in $\cC$ we define $\text{Id}_f:=\text{Id}_F$ where $\dom(f)=F$. Then iit's easy to check that $\text{Id}_f \circ g =g$ and $h \circ \text{Id}_f=h$ for appropriate arrows $g,h$.
+
+ \item Prove $\Hom(-,-):\cC^{op} \times \cC \to Set$ is a functor. It is know that objects of $\cC \times \cC^{op}$ are pairs of objects and arrows of $\cC^{op} \times \cC$ are pairs of arrows in the respective categories.
+Composition is done componetwise, reversing the order in the first position, to account for the reversal of arrows. Let $(f,g):(A,B)\to(A',B')$ be an arrow in $(\cC^{op} \times \cC)$ where $f:A'\to A$ and $g:B \to B'$ 
+$\Hom(-,-)(f,g):\Hom(A,B) \to \Hom(A',B')$ is the (set) mapping with $h \mapsto g h f$\\
+Clearly $\text{Id}_{(A,B)}=(\text{Id}_A,\text{Id}_B)$. 
+
+
+If $f \in \Hom(A,B)$ we have that \[\Hom(-,-)(\text{Id}_A,\text{Id}_B)(f)=\text{Id}_B f \text{Id}_A=f\] Thus $\Hom(-,-)\text{Id}_{(A,B)}$ is indeed the identity arrow.\\
+ 
+ If we have $(f,g):(A,B) \to (C,D)$ and $(h,k):(C,D \to (E,F)$ two arrows in $\cC^{op} \times \cC$, then $(f,g)(h,k)=(fh,gk)$. We get \[\Hom(-,-)(hf,gk)(\phi)=gk (\phi) hf=g(k \phi h)f=\] \[(\Hom(-,-)(f,g))(k \phi h)= (\Hom(-,-)(f,g))(\Hom(-,-)(h,k)(\phi)\]
+
+\item First we show that congruence relations on a group $G$ correspond uniquely to normal subgroups of $G$. Recall that a congruence relation on a group is an equivalence relation compatible with the operation on $G$, that is \[g \sim g' , h\sim h' \Rightarrow gh \sim g'h'\]
+It is known from elementary group theory that any subgroup defines an equivalence relation on $G$ through the partition in left cosets. The subgroup being normal is needed for the compatibility of the aforementioned equivalence relation with the operation on $G$.\\
+Let $ \sim$ be a congruence relation on $G$. We show $[e] \trianglelefteq G$. First we show $[e]\leq G$. Let $a,b \in [e] \iff a \sim e , b \sim e \Rightarrow ab \sim ee=e$ thus $ab \in [e]$. By reflexivity $b^{-1} \sim b^{-1}$ but also $e \sim b$ so $b^{-1}=b^{-1}e \sim b^{-1} b=e$ so it is indeed a subgroup. Now for normality. Let $g \in G$ be an arbitrary element and $a \sim e$. Then by $g\sim g$ and $e \sim a$ we obtain $g \sim ga$ combining with $g^{-1}\sim g^{-1}$ we get $e \sim gag^{-1}$, as desired.
+\item Let $(X,\tau)$ be a topological space. The specilization ordering is defined as \[ x \leq_s y \iff x \in  \text{cl}\{y\} \]
+This makes $(X, \leq_s)$ into a preoerdered set. Reflexivity is evident, and we obtain transitivity by considering $\text{cl}\{y\}=\cap_{F\in \mathcal{F}} F$, where $\mathcal{F}=\{$closed sets that contain y$\}$. Then if $x \leq_s y$ and $y \leq_s z$ we must show $x$ is contained in all closed subsets of $X$ that contain $z$. Let $F$ be such a set, then $y \in F$. Thus $F$ is closed and contains $y$ so it must contain $x$ as well.\\
+ Define $F: \text{Top} \to \text{Preord}$ by setting $F(X,\tau)=(X, \leq_s)$ and if $f:(X,\tau_X) \to (Y,\tau_Y)$ is continuous then $F(f)=f$.\\
+ We have just shown that $(X,\leq_s)$ is indeed an object in the category $\text{Preord}$. Now we show that $f:(X, \leq_s)\to (Y, \leq'_s)$ is monotone and thus an arrow in Preord. Recall that for continuous $f$, \[ \forall A \subseteq X: f(\text{cl}_X(A)) \subseteq \text{cl}_Y(f(A)) \]
+ Then $f$ is indeed monotone since $x \leq_s y \iff x \in \text{cl}_X\{y\} \Rightarrow f(x) \in f(\text{cl}_X\{y\}) \subseteq \text{cl}_Yf(\{y\})=\text{cl}_Y \{f(y)\} \Rightarrow f(x) \in \text{cl}_Y \{f(y)\}  \iff f(x) \leq'_s f(y)$ as desired.\\
+ The continuous $\text{Id}_X$, considering the definitions, clearly induces the identity of $(X, \leq_s)$.\\
+ Since $F(f)=f$ and the composition law in both Top and Preord is the composition of functions there is nothing to prove.
+\item Since the multiplicative monoid has only one object, $\star$, we have no choice but to define $F(X)=\star$, $\forall (I,x)$ in $X_0$. If we have a composition of differentiable functions as follows,
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJJIl0sWzEsMCwiSiJdLFsyLDAsIksiXSxbMCwxLCJmIl0sWzEsMiwiZyJdXQ==
+\[\begin{tikzcd}
+	{I} & {J} & {K}
+	\arrow["{f}", from=1-1, to=1-2]
+	\arrow["{g}", from=1-2, to=1-3]
+\end{tikzcd}\]
+we compute using the \textit{chain rule}, $F(g \circ f)=(g \circ f)'(x)=g'(f(x)) f'(x)=g'(y)f'(x)=F(g)F(f)$, where $y=f(x)$. For the last equality recall the definition of the multiplicative monoid. For the identity we simply notice that if $f=\text{Id}_I:I \to I$ then $\forall x \in I: f'(x)=1$, thus $F(\text{Id}_I)=1=\text{Id}_{\star}$
+\item 
+\begin{enumerate}
+\item In Set $f$ is mono $\iff$ $f$ is injective.\\ $(\Rightarrow)$ Let $f$ be mono and suppose for some $x_1,x_2$ we have $f(x_1)=f(x_2)$. Then if $g_i:\dom(f) \to \dom(f)$ are the constant functions with output $x_i$ for $i=1,2$ respectively then  $\forall t \dom(f): fg_1(t)=fg_2(t)$. By $f$ being mono we get $g_1=g_2$ and by evaluating at some input we get the desired $x_1=x_2$.\\
+$(\Leftarrow)$ Immediate by the definition of injective functions.
+\item Since $gf$ is mono for any pair of arrows $h,k$ with $\cod(h)=\cod(k)=\dom(gf)=\dom(f)$, we have $gfh=gfk \Rightarrow h=k$. To prove $f$ is mono let $h,k$ be such arrows and suppose $fh=fk \Rightarrow gfh=gfk \Rightarrow h=k$.
+\end{enumerate}
+\item A mono $f:A \to B$ is split $\iff \exists g:B \to A: gf=\text{Id}_A$\\
+We do only the case of a split mono. Let $f:A \to B$ be a split mono and $F:\cC \to \cD$ be a functor. We show that $F(f)$ is a split mono. By the choice of $f$ we have $\exists g:B \to A: fg=\text{Id}_B$. By applying $F$ we get $F(f)F(g)=F(fg)=F(\text{Id}_B)=\text{Id}_{FB}$.
+\item Let $i:\mathbb{Z} \hookrightarrow \mathbb{Q}$ be the embedding wtih $i(1_{\mathbb{Z}})=1_{\mathbb{Q}}$. Take two arbitrary $f,g:\mathbb{Q} \to R$ and suppose $fi=gi \iff \forall k \in \mathbb{N}: f(\frac{k}{1})=g(\frac{k}{1})$. We have $g(1)=h(1) \Rightarrow g(m\cdot m^{-1})=h(1)=1_R$ since $g$ is multiplicative, $g(m)\cdot g(m^{-1})=h(1)=1_R$. Notice this implies $g(m^{-1})=(g(m))^{-1}$. Additionally we get $g(m^{-1})=h(1) (g(m))^{-1}=h(1)(h(m))^{-1}=h(m^{-1})$. Now take an arbitrary $\frac{m}{n} \in \mathbb{Q}$ by applying $g: g(\frac{m}{n})=g(mn^{-1})=g(m)g(n^{-1})=h(m)h(n^{-1})=h(\frac{m}{n})$. Therefore indeed we have  $f=g$ thus $i$ is indeed epi.
+\item 
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\end{enumerate}
+\end{exercises}
+\end{document}
