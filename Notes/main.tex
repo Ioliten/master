@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage,amsthm,amssymb,amsmath,amsfonts}
+\usepackage{graphicx,algorithmic,algorithm}
+\usepackage[]{datetime}
+\usepackage{aliascnt} % new !
+\usepackage{hyperref,todonotes}
+\usepackage{lmodern}
+\usepackage{mathtools}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+% for \mapsfrom
+\usepackage{stmaryrd}
+
+\usepackage{subcaption}
+\usepackage{cleveref}
+
+\usepackage[greek,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{alphabeta}
+
+\usepackage{amsmath,ifthen,color,eurosym}
+\usepackage{wrapfig,hyperref,cite}
+%\usepackage{times}
+\usepackage{latexsym,amsthm,amsmath,amssymb,url}
+%,cite}
+
+\usepackage{float}
+
+\extrafloats{100}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+%\usepackage{dirtytalk}
+
+\usepackage{cite}
+
+
+
+% \newcommand{\aliv}[1]{\marginpar{\scriptsize \tt {A.Λ.}> {\sl #1}}}
+
+\usepackage{color}
+
+
+\newcommand{\yellow}[1]{{\color{Yellow}#1}}
+\newcommand{\black}[1]{{\color{Black}#1}}
+\newcommand{\other}[1]{{\color{Other}#1}}
+\newcommand{\otherother}[1]{{\color{Otherother}#1}}
+\newcommand{\blue}[1]{{\color{Blue}#1}}
+\newcommand{\red}[1]{{\color{Red}#1}}
+\newcommand{\green}[1]{{\color{mygreen}#1}}
+\newcommand{\magenta}[1]{{\color{Magenta}#1}}
+\newcommand{\brown}[1]{{\color{Brown}#1}}
+\newcommand{\white}[1]{{\color{White}#1}}
+\newcommand{\grey}[1]{{\color{Grey}#1}}
+\DeclareMathOperator{\tw}{{\bf tw}}
+
+
+% Autoref stuff
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
+% for a good theorem numbering
+\newtheorem{dummy}{***}[section]
+\newcommand{\mynewtheorem}[2]{
+ \newaliascnt{#1}{dummy}
+ \newtheorem{#1}[#1]{#2}
+ \aliascntresetthe{#1}
+ % maybe we will squish some autoref defaults, but who cares?
+ \expandafter\def\csname #1autorefname\endcsname{#2}
+}
+
+\def\problemautorefname{Problem}
+\def\chapterautorefname{Chapter}
+\def\definitionautorefname{Definition}
+\def\claimautorefname{Claim}
+\def\corollaryautorefname{Corollary}
+\def\lemmaautorefname{Lemma}
+\def\sublemmaautorefname{Sublemma}
+\def\propositionautorefname{Proposition}
+\def\observationautorefname{Observation}
+\def\corollaryautorefname{Corollary}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\figureautorefname{Diagram}
+\def\tableautorefname{Table}
+\def\remarkautorefname{Remark}
+\def\rmkautorefname{Remark}
+\def\observationautorefname{Observation}
+\def\conjectureautorefname{Conjecture}
+\def\questionautorefname{Question}
+
+
+\theoremstyle{plain}
+\mynewtheorem{theorem}{Theorem}
+\mynewtheorem{proposition}{Proposition}
+\mynewtheorem{corollary}{Corollary}
+\mynewtheorem{lemma}{Lemma}
+\mynewtheorem{exercise}{Exercise}
+
+\theoremstyle{definition}
+\mynewtheorem{definition}{Definition}
+\theoremstyle{remark}
+\mynewtheorem{sublemma}{Sublemma}
+\mynewtheorem{claim}{Claim}
+\mynewtheorem{fact}{Fact}
+\mynewtheorem{remark}{Remark}
+\mynewtheorem{application}{Application}
+\mynewtheorem{conjecture}{Conjecture}
+\mynewtheorem{question}{Question}       
+\mynewtheorem{observation}{Observation}
+\mynewtheorem{problem}{Problem}
+\mynewtheorem{note}{Note}
+\mynewtheorem{examples}{Examples}
+\mynewtheorem{example}{Example}
+\mynewtheorem{exercises}{Exercises}
+
+%1-1 correspondence
+\makeatletter
+\def\DoubleFill@{\arrowfill@=\Relbar=}
+\providecommand*\xDouble[2][]{%
+  \ext@arrow 0055{\DoubleFill@}{#1}{#2}}
+\makeatother
+
+%Subobject classifier
+\newcommand{\ceil}[1]{\lceil #1 \rceil }
+
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cP}{\mathcal{P}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Ar}{\mathrm{Ar}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\cod}{\mathrm{cod}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Cone}{\mathrm{Cone}}
+\newcommand{\Cocone}{\mathrm{Cocone}}
+\newcommand{\colim}{\mathrm{colim}}
+\newcommand{\Sub}{\mathrm{Sub}}
+\newcommand{\PSh}{\mathrm{PSh}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Adj}{\mathrm{Adj}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Sep}{\mathrm{Sep}}
+\newcommand{\ClSub}{\mathrm{ClSub}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+\title{Category Theory and Topos Theory: Lecture Notes}
+\author{CatTheo Fan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzcd}
+  \arrow[rr, bend right=60] \arrow[rr, bend right=49] \arrow[rr, bend right] \arrow[rr, bend left=60] \arrow[rr, bend left=49] \arrow[rr, bend left] \arrow[rr] \arrow[rr, bend right=67] \arrow[rr, bend left=67] \arrow[rr, bend right=71] \arrow[rr, bend left=71] \arrow[rr, bend left=74] \arrow[rr, bend right=74] \arrow[rr, bend left=76] \arrow[rr, bend right=76] \arrow[rr, bend right=78] \arrow[rr, bend left=78] \arrow[rr, bend right=79] \arrow[rr, bend left=79]                                                                                                           &  &  \arrow[dd, bend right=76] \arrow[dd, bend right=74] \arrow[dd, bend right=71] \arrow[dd, bend right=67] \arrow[dd, bend right=60] \arrow[dd, bend right=49] \arrow[dd, bend right] \arrow[dd, bend left=71] \arrow[dd, bend left=74] \arrow[dd, bend left=76] \arrow[dd, bend left=67] \arrow[dd, bend left=60] \arrow[dd, bend left=49] \arrow[dd, bend left] \arrow[dd] \arrow[dd, bend left=78] \arrow[dd, bend right=78] \arrow[dd, bend right=79] \arrow[dd, bend right=80] \\                        &  &                            \\
+ \arrow[rruu, bend right=60] \arrow[rruu, bend right=49] \arrow[rruu, bend right] \arrow[rruu, bend left=60] \arrow[rruu, bend left=49] \arrow[rruu, bend left] \arrow[uu, bend left=60] \arrow[uu, bend left=49] \arrow[uu, bend left] \arrow[uu, bend right=60] \arrow[uu, bend right=49] \arrow[uu, bend right] \arrow[uu, bend right=67] \arrow[uu, bend left=67] \arrow[uu, bend left=71] \arrow[uu, bend right=71] \arrow[uu, bend right=74] \arrow[uu, bend left=74] \arrow[uu, bend right=76] \arrow[uu, bend left=76] \arrow[uu, bend right=78] \arrow[uu, bend left=78] \arrow[uu, bend left=79] \arrow[uu, bend right=79] \arrow[uu] \arrow[rruu] \arrow[rr, bend left=79] \arrow[rr, bend left=78] \arrow[rr, bend left=76] \arrow[rr, bend left=74] \arrow[rr, bend left=71] \arrow[rr, bend left=67] \arrow[rr, bend left=60] \arrow[rr, bend left=49] \arrow[rr, bend left] \arrow[rr, bend right=78] \arrow[rr, bend right=76] \arrow[rr, bend right=74] \arrow[rr, bend right=71] \arrow[rr, bend right=67] \arrow[rr, bend right=60] \arrow[rr, bend right=49] \arrow[rr, bend right] \arrow[rr] &  &  \arrow[lluu, bend left=67] \arrow[lluu, bend left=71] \arrow[lluu, bend left=60] \arrow[lluu, bend left=49] \arrow[lluu, bend left] \arrow[lluu, bend left] \arrow[lluu, bend right=71] \arrow[lluu, bend right=67] \arrow[lluu, bend right=49] \arrow[lluu, bend right] \arrow[lluu] \arrow[lluu, bend right=60]                                                                                                                                                               
+\end{tikzcd}
+\label{psy}
+\end{figure}
+
+
+
+
+\end{document}
